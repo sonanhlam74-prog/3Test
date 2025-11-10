@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="container">
+    <div>   
+    <nav>
+        <button class="tab-button active" data-page="page1" type="button" style="color: #1ac6ff">Hôm nay</button>
+        <button class="tab-button" data-page="page2" type="button" style="color: #1ac6ff">Dự báo</button>
+        <button class="tab-button" data-page="page3" type="button" style="color: #1ac6ff">Thống kê</button>
+
+
+    </nav>
+    </div>
+    <div id="search-bar">
+        <div class="searchbar_container">
+            <div class="searchbar">
+                <span class="material-symbols-outlined">search</span>
+                <input class="search_input" type="text" placeholder="Search..." autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 1: Weather content -->
+    <div id="page1" class="page-content">
+    <title-wrapper size="m" id="overview">
+    <div part="title" class="title m">
+    <div class="background-container" part="background">
+    <div class="location-condition">
+        <span class="location">Hôm nay</span>
+        <span class="separator">:</span>
+        <span class="condition"></span>
+    </div>
+    <div class="overview">
+        <p class="temperature"></p>
+        <img class="weather-image" src="https://maps.gstatic.com/weather/v1/clear.svg"/>
+        <div class="column">
+            <p class="item tooltip-item">Cảm giác như:<span></span>
+                <span class="tooltip-text">Nhiệt độ cảm nhận thực tế</span>
+            </p>
+            <p class="item tooltip-item">Nhiệt độ thay đổi 24 giờ qua:<span></span>
+                <span class="tooltip-text">Sự thay đổi của nhiệt độ qua 24 giờ</span>
+            </p>
+            <p class="item tooltip-item">Khả năng sấm sét:<span></span>
+                <span class="tooltip-text">Biểu diễn số (0-100) cho biết tỷ lệ phần trăm của một cơn giông bão</span>
+            </p>
+            <p class="item tooltip-item">Nhiệt độ cao nhất:<span></span>
+                <span class="tooltip-text">Nhiệt độ cao nhất trong 24 giờ qua</span>
+            </p>
+            <p class="item tooltip-item">Nhiệt độ thấp nhất:<span></span>
+                <span class="tooltip-text">Nhiệt độ thấp nhất trong 24 giờ qua</span>
+            </p>
+            <p class="item tooltip-item">QPF:<span></span>
+                <span class="tooltip-text">Lượng mưa, được đo bằng lượng nước lỏng tương đương, đã tích tụ trong 24 giờ qua</span>
+            </p>
+            <p class="item tooltip-item">Khả năng mưa:<span></span>
+                <span class="tooltip-text">Một số từ 0 đến 100 biểu thị khả năng có mưa</span>
+            </p>
+        </div>
+    </div>
+    </div>
+    </div>  
+    </title-wrapper>
+
+    <div class="weather-blocks-wrapper">    
+        <div class="background-container wind-chill-container">
+            <div class="wind-chill-block">
+                <p class="wind-chill-title"><span class="material-symbols-outlined wind-title-icon">air</span>Gió lạnh</p>
+                <div class="wind-chill-content">
+                    <div class="wind-chill-text">
+                        <p class="wind-chill-value">--°C</p>
+                        <p class="wind-chill-caption">Lạnh so với gió</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class ="background-container heat-index-container">
+            <div class="heat-index-block">
+                <p class="heat-index-title"><span class="material-symbols-outlined heat-title-icon">thermostat</span>Chỉ số nhiệt độ</p>
+                <div class="heat-index-content">
+                    <p class="heat-index-value">--°C</p>
+                    <p class="heat-index-caption">Nhiệt độ so với % độ ẩm</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weather-blocks-wrapper">
+        <div class="background-container visibility-container">
+            <div class="visibility-block">
+                <p class="visibility-title"><span class="material-symbols-outlined visibility-title-icon">visibility</span>Tầm nhìn</p>
+                <div class="visibility-content">
+                    <p class="visibility-value">--Km</p>
+                </div>
+            </div>
+        </div>
+
+        <div class ="background-container cloud-cover-container">
+            <div class="cloud-cover-block">
+                <p class="cloud-cover-title"><span class="material-symbols-outlined cloud-cover-title-icon">cloud</span>Mây che phủ</p>
+                <div class="cloud-cover-content">
+                    <p class="cloud-cover-value">--%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weather-blocks-wrapper">
+        <div class="background-container wind-container">
+            <div class="wind-block">
+                <p class="wind-title"><span class="material-symbols-outlined wind-title-icon">air</span>Gió</p>
+                <div class="wind-content">
+                    <p class="wind-speed">--km/h</p>
+                    <p class ="wind-speed-caption">Speed</p>
+                            <div class="wind-row">
+                                <div class="wind-metric">
+                                    <p class="wind-gust">--km/h</p>
+                                    <p class="wind-gust-caption">Gust</p>
+                                </div>
+                                <div class="wind-metric">
+                                    <p class="wind-degree" style="margin-left:200px">--°W</p>
+                                    <p class="wind-degree-caption" style="margin-left:200px">Direction</p>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+        <div class ="background-container relative-humidity-container">
+            <div class="relative-humidity-block">
+                <p class="relative-humidity-title"><span class="material-symbols-outlined relative-humidity-title-icon">water_drop</span>Độ ẩm tương đối</p>
+                <div class="relative-humidity-content">
+                    <p class="relative-humidity-value" style="margin-top:15px">--%</p>
+                    <p class="relative-humidity-caption" style="margin-top:50px">Điểm sương hiện tại</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weather-blocks-wrapper">
+        <div class="background-container UV-index-container">
+            <div class="UV-index-block">
+                <p class="UV-index-title"><span class="material-symbols-outlined UV-index-title-icon">sunny</span>Chỉ số UV</p>
+
+                <div class="UV-index-content">
+                    <div class = "half-gauge">  
+                        <div class = "chart-container">
+                        <svg viewBox="0 0 100 55" class="UV-index-icon">
+                            <path class="arc-background" d="M 10 50 A 40 40 0 1 1 90 50" fill="none" stroke-width="3" stroke="#E8EAED"></path>
+                            <path class="arc-progress" d="M 10 50 A 40 40 0 1 1 90 50" fill="none" stroke-width="6" stroke-linecap="round" stroke="#4caf50" stroke-dasharray="0 1000"></path>
+                        </svg>
+                        <div class="uv-gauge">
+                            <div class="uv-text"><span class="uv-current">--</span><span class="uv-sep">/</span><span class="uv-max">11</span></div>
+                        </div>
+                        </div>
+                        </div>
+                    <p class="UV-index-caption" style = "text-align: center; bottom: 0;margin-top:25px">Cường độ bức xạ cực tím từ mặt trời</p>
+                </div>
+            </div>
+        </div>
+
+        <div class ="background-container air-pressure-container">
+            <div class="air-pressure-block">
+                <p class="air-pressure-title"><span class="material-symbols-outlined air-pressure-title-icon">compress</span>Áp suất không khí</p>
+                <div class="air-pressure-content">
+                    <div class = "half-gauge">
+                        <div class="chart-container">
+                        <svg viewBox="0 0 100 55" class="air-pressure-icon">
+                            <path class="arc-background" d="M 10 50 A 40 40 0 1 1 90 50" fill="none" stroke-width="3" stroke="#E8EAED"></path>
+                            <path class="arc-progress" d="M 10 50 A 40 40 0 1 1 90 50" fill="none" stroke-width="6" stroke-linecap="round" stroke="#4caf50" stroke-dasharray="0 1000"></path>
+                        </svg>
+                        <div class="air-pressure-gauge">
+                            <div class="air-pressure-text"><span class="air-pressure-current">--</span></div>
+                        </div>
+                        </div>
+
+                    <p class="air-pressure-unit-below">hPa</p>
+                    <p class="air-pressure-caption" style="bottom: 0;">Mức nước biển trung bình Millibars</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> 
+    </div> <!-- End page1 -->
+
+    <!-- Page 2 -->
+    <section id="page2" class="content page-content hidden">
+        <div class="page2-header"></div>
+        <div class="block hourly-block">
+            <h3 class="block-title">Dự báo hàng giờ (240h)</h3>
+            <forest-tab>
+                <title-wrapper size = "1" id="hourly-forecast">
+                    <hour-forecast>
+                        <div class = "hourly-forecast">
+                                <div class = "forecast-container">
+                                    <div class ="days-nav">
+                                        <button class="back" disabled>
+                                            <svg width="25" height="24" viewBox="0 0 25 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.08984 7.41L13.6698 12L9.08984 16.59L10.4998 18L16.4998 12L10.4998 6L9.08984 7.41Z"></path>
+                                            </svg>
+                                        </button>
+                                        <p class = "date"><span>Hôm nay</span><span></span></p>
+                                        <button class = "next">
+                                            <svg width="25" height="24" viewBox="0 0 25 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.08984 7.41L13.6698 12L9.08984 16.59L10.4998 18L16.4998 12L10.4998 6L9.08984 7.41Z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class = "scroll-container">
+                                        <div class = "contents">
+                                            <hourly-list>
+                                                <div class = "hour">
+                                                    <div class = "hour-element selected">
+                                                        <p class = "item-time">Now</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/clear.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon " src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div id class = "hour-element">
+                                                        <p class = "item-time">01:00</p>
+                                                        <div class = "icon-container">
+                                                            <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" />
+                                                        </div>
+                                                        <p class = "wind" >
+                                                            <span>2km/h</span>
+                                                            <span style="color: rgb(95,99,104); transform: rotate(270deg);">
+                                                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.98265 6.87198L0.916818 8.32969C0.812516 8.38088 0.71451 8.39571 0.622801 8.3742C0.531162 8.35274 0.45485 8.31258 0.393883 8.25371C0.332916 8.19483 0.29147 8.11808 0.269545 8.02345C0.247681 7.92888 0.260503 7.82858 0.30802 7.72255L3.67958 0.448403C3.72046 0.350675 3.78148 0.276699 3.86265 0.226375C3.9438 0.176051 4.03019 0.148239 4.12181 0.143139C4.21345 0.138039 4.29889 0.156251 4.37814 0.197674C4.45741 0.239097 4.5154 0.306495 4.55215 0.399968L7.6204 7.32104C7.66263 7.41969 7.67124 7.51767 7.64613 7.61498C7.62102 7.71223 7.57664 7.79379 7.51298 7.85966C7.44942 7.92553 7.37025 7.97406 7.27549 8.00526C7.18071 8.0364 7.08242 8.03207 6.98071 7.99229L3.98265 6.87198Z" fill="currentColor"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </hourly-list>
+                                            <div class="charts-block"></div>
+                                        </div>
+                                    </div>
+                                    <slider-element></slider-element>
+                                </div>
+                            </div>
+                        </hour-forecast>
+                    </title-wrapper>
+            </forest-tab>
+        </div>
+
+        <div class="block daily-block">
+            <h3 class="block-title">Dự báo hằng ngày(10 Ngày)</h3>
+            <forest-tab>
+                <title-wrapper size = "m1" id = "daily-forecast">
+                        <div class = "tile" class = "title m1">
+                                <slot></slot>
+                            </div>
+                        </div>
+                        <daily-forecast>
+                            <div class = "daily-forecast">
+                                <div class = "forecast-container">
+                                    <div class ="scroll-container">
+                                        <div class = "forecast-day-selected">
+                                            <span class = "weekday"></span>
+                                            <span class = "weekday">
+                                            </span>
+                                            <div class = "icon-container">
+                                                <img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/sunny.svg" />
+                                            </div>
+                                            <span class = "max-temp"></span>
+                                        </div>
+                                    </div>
+                                    <div class = "forecast-details">
+                                        <div class ="forecast-detail">
+                                            <div class ="detail-title">
+                                                <span class = "detail-title"></span>
+                                                <div class = "conditions">
+                                                    <div class = "icon-container"><img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/partly_cloudy.svg" /></div>
+                                                    <span></span>
+                                                </div>
+                                                <div class = "probability">
+                                                    <p>
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M5.30133 14.9487L5.85 13.3973H4.686L5.45517 11.2435H6.86533L6.2065 12.782H7.48083L5.7885 14.9487H5.30133ZM9.45517 14.3333L9.88967 13.0897H8.68583L9.34483 11.2435H10.7552L10.223 12.4743H11.4807L9.94233 14.3333H9.45517ZM5 10.5C4.03167 10.5 3.20622 10.1588 2.52367 9.47633C1.84122 8.79378 1.5 7.96833 1.5 7C1.5 6.10767 1.79806 5.33206 2.39417 4.67317C2.99039 4.01417 3.73206 3.62994 4.61917 3.5205C4.96194 2.8915 5.431 2.3975 6.02633 2.0385C6.62156 1.6795 7.27944 1.5 8 1.5C8.97867 1.5 9.82461 1.81839 10.5378 2.45517C11.2511 3.09194 11.6748 3.88594 11.809 4.83717C12.6013 4.89528 13.2479 5.19594 13.7487 5.73917C14.2496 6.28228 14.5 6.92478 14.5 7.66667C14.5 8.453 14.2243 9.12178 13.673 9.673C13.1218 10.2243 12.453 10.5 11.6667 10.5H5ZM5 9.5H11.6667C12.1761 9.5 12.609 9.32178 12.9653 8.96533C13.3218 8.609 13.5 8.17611 13.5 7.66667C13.5 7.15722 13.3218 6.72433 12.9653 6.368C12.609 6.01156 12.1761 5.83333 11.6667 5.83333H10.8333V5.33333C10.8333 4.553 10.5562 3.88567 10.002 3.33133C9.44767 2.77711 8.78033 2.5 8 2.5C7.43244 2.5 6.91533 2.65406 6.44867 2.96217C5.982 3.27028 5.63117 3.68372 5.39617 4.2025L5.27433 4.5H4.96667C4.28633 4.52222 3.70511 4.77433 3.223 5.25633C2.741 5.73844 2.5 6.31967 2.5 7C2.5 7.69144 2.74378 8.281 3.23133 8.76867C3.719 9.25622 4.30856 9.5 5 9.5Z" fill="currentColor"></path>
+                                                        <path d="M5.30133 14.9487L5.85 13.3973H4.686L5.45517 11.2435H6.86533L6.2065 12.782H7.48083L5.7885 14.9487H5.30133ZM9.45517 14.3333L9.88967 13.0897H8.68583L9.34483 11.2435H10.7552L10.223 12.4743H11.4807L9.94233 14.3333H9.45517ZM5 10.5C4.03167 10.5 3.20622 10.1588 2.52367 9.47633C1.84122 8.79378 1.5 7.96833 1.5 7C1.5 6.10767 1.79806 5.33206 2.39417 4.67317C2.99039 4.01417 3.73206 3.62994 4.61917 3.5205C4.96194 2.8915 5.431 2.3975 6.02633 2.0385C6.62156 1.6795 7.27944 1.5 8 1.5C8.97867 1.5 9.82461 1.81839 10.5378 2.45517C11.2511 3.09194 11.6748 3.88594 11.809 4.83717C12.6013 4.89528 13.2479 5.19594 13.7487 5.73917C14.2496 6.28228 14.5 6.92478 14.5 7.66667C14.5 8.453 14.2243 9.12178 13.673 9.673C13.1218 10.2243 12.453 10.5 11.6667 10.5H5ZM5 9.5H11.6667C12.1761 9.5 12.609 9.32178 12.9653 8.96533C13.3218 8.609 13.5 8.17611 13.5 7.66667C13.5 7.15722 13.3218 6.72433 12.9653 6.368C12.609 6.01156 12.1761 5.83333 11.6667 5.83333H10.8333V5.33333C10.8333 4.553 10.5562 3.88567 10.002 3.33133C9.44767 2.77711 8.78033 2.5 8 2.5C7.43244 2.5 6.91533 2.65406 6.44867 2.96217C5.982 3.27028 5.63117 3.68372 5.39617 4.2025L5.27433 4.5H4.96667C4.28633 4.52222 3.70511 4.77433 3.223 5.25633C2.741 5.73844 2.5 6.31967 2.5 7C2.5 7.69144 2.74378 8.281 3.23133 8.76867C3.719 9.25622 4.30856 9.5 5 9.5Z" fill="currentColor" fill-opacity="0.04"></path>
+                                                        </svg>
+                                                        <span>0%</span>
+                                                    </p>
+                                                    <p>
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13.8828 21.7558C13.6967 21.8571 13.5067 21.8731 13.3125 21.8038C13.1183 21.7346 12.9706 21.6071 12.8693 21.4212L11.273 18.2288C11.1718 18.0429 11.1558 17.8529 11.225 17.6587C11.2942 17.4644 11.4218 17.3167 11.6077 17.2155C11.7936 17.1142 11.9853 17.0998 12.1827 17.1723C12.3801 17.2446 12.5294 17.3737 12.6308 17.5595L14.227 20.7423C14.3282 20.9283 14.3426 21.1183 14.2703 21.3125C14.1978 21.5067 14.0686 21.6544 13.8828 21.7558ZM19.8923 21.7558C19.7064 21.8571 19.5164 21.8731 19.3223 21.8038C19.1279 21.7346 18.9801 21.6071 18.8788 21.4212L17.2828 18.2288C17.1814 18.0429 17.1654 17.8529 17.2348 17.6587C17.3039 17.4644 17.4314 17.3167 17.6173 17.2155C17.8033 17.1142 17.9949 17.0998 18.1923 17.1723C18.3897 17.2446 18.5391 17.3737 18.6402 17.5595L20.2365 20.7423C20.3378 20.9283 20.3523 21.1183 20.2798 21.3125C20.2074 21.5067 20.0783 21.6544 19.8923 21.7558ZM7.88275 21.7558C7.69675 21.8571 7.50508 21.8731 7.30775 21.8038C7.11025 21.7346 6.96092 21.6071 6.85975 21.4212L5.2635 18.2288C5.16217 18.0429 5.14775 17.8529 5.22025 17.6587C5.29258 17.4644 5.42175 17.3167 5.60775 17.2155C5.79358 17.1142 5.98358 17.0998 6.17775 17.1723C6.37208 17.2446 6.51992 17.3737 6.62125 17.5595L8.21725 20.7423C8.31858 20.9283 8.33458 21.1183 8.26525 21.3125C8.19608 21.5067 8.06858 21.6544 7.88275 21.7558ZM7.5 15.75C6.0475 15.75 4.80933 15.2382 3.7855 14.2145C2.76183 13.1907 2.25 11.9525 2.25 10.5C2.25 9.1615 2.69708 7.99808 3.59125 7.00975C4.48558 6.02125 5.59808 5.44492 6.92875 5.28075C7.44292 4.33725 8.1465 3.59625 9.0395 3.05775C9.93233 2.51925 10.9192 2.25 12 2.25C13.468 2.25 14.7369 2.72758 15.8068 3.68275C16.8766 4.63792 17.5122 5.82892 17.7135 7.25575C18.902 7.34292 19.8718 7.79392 20.623 8.60875C21.3743 9.42342 21.75 10.3872 21.75 11.5C21.75 12.6795 21.3365 13.6827 20.5095 14.5095C19.6827 15.3365 18.6795 15.75 17.5 15.75H7.5ZM7.5 14.25H17.5C18.2642 14.25 18.9135 13.9827 19.448 13.448C19.9827 12.9135 20.25 12.2642 20.25 11.5C20.25 10.7358 19.9827 10.0865 19.448 9.552C18.9135 9.01733 18.2642 8.75 17.5 8.75H16.25V8C16.25 6.8295 15.8343 5.8285 15.003 4.997C14.1715 4.16567 13.1705 3.75 12 3.75C11.1487 3.75 10.373 3.98108 9.673 4.44325C8.973 4.90542 8.44675 5.52558 8.09425 6.30375L7.9115 6.75H7.45C6.4295 6.78333 5.55767 7.1615 4.8345 7.8845C4.1115 8.60767 3.75 9.4795 3.75 10.5C3.75 11.5372 4.11567 12.4215 4.847 13.153C5.5785 13.8843 6.46283 14.25 7.5 14.25Z" fill="currentColor"></path>
+                                                        </svg>
+                                                        <span>0%</span>
+                                                        <span>0.0mm</span>
+                                                    </p>
+                                                </div>
+
+                                                <div class = "addition-info">
+                                                    <p>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.48033 5.691L12.0001 2.172L15.5198 5.69175C16.2157 6.38792 16.6895 7.27479 16.8813 8.24022C17.0731 9.20564 16.9744 10.2063 16.5975 11.1156C16.2207 12.0249 15.5827 12.802 14.7642 13.3488C13.9457 13.8955 12.9835 14.1873 11.9992 14.1872C11.0149 14.1871 10.0527 13.8951 9.23433 13.3482C8.41596 12.8013 7.77813 12.024 7.40149 11.1146C7.02485 10.2052 6.92631 9.20456 7.11834 8.23918C7.31037 7.27379 7.78435 6.38702 8.48033 5.691Z" fill="#5285EB"></path>
+                                                        <path d="M22.8765 17.2417H1.12354C1.02408 17.2417 0.928696 17.2022 0.85837 17.1319C0.788044 17.0616 0.748535 16.9662 0.748535 16.8667C0.748535 16.7673 0.788044 16.6719 0.85837 16.6016C0.928696 16.5313 1.02408 16.4917 1.12354 16.4917H22.8773C22.9767 16.4918 23.0721 16.5314 23.1423 16.6018C23.2126 16.6722 23.252 16.7677 23.2519 16.8671C23.2518 16.9666 23.2122 17.0619 23.1418 17.1322C23.0714 17.2024 22.976 17.2418 22.8765 17.2417ZM22.8765 20.2537H1.12354C1.02408 20.2537 0.928696 20.2142 0.85837 20.1439C0.788044 20.0736 0.748535 19.9782 0.748535 19.8787C0.748535 19.7793 0.788044 19.6839 0.85837 19.6136C0.928696 19.5433 1.02408 19.5037 1.12354 19.5037H22.8773C22.9265 19.5038 22.9753 19.5135 23.0208 19.5324C23.0662 19.5513 23.1076 19.579 23.1423 19.6138C23.1771 19.6487 23.2047 19.6901 23.2235 19.7356C23.2423 19.7811 23.252 19.8299 23.2519 19.8791C23.2519 19.9284 23.2421 19.9771 23.2232 20.0226C23.2043 20.0681 23.1767 20.1094 23.1418 20.1442C23.107 20.179 23.0656 20.2065 23.0201 20.2253C22.9746 20.2441 22.9258 20.2538 22.8765 20.2537ZM22.8765 23.265H1.12354C1.02408 23.265 0.928696 23.2255 0.85837 23.1552C0.788044 23.0848 0.748535 22.9895 0.748535 22.89C0.748535 22.7905 0.788044 22.6952 0.85837 22.6248C0.928696 22.5545 1.02408 22.515 1.12354 22.515H22.8773C22.9265 22.515 22.9753 22.5248 23.0208 22.5437C23.0662 22.5626 23.1076 22.5902 23.1423 22.6251C23.1771 22.66 23.2047 22.7013 23.2235 22.7468C23.2423 22.7924 23.252 22.8411 23.2519 22.8904C23.2519 22.9396 23.2421 22.9884 23.2232 23.0338C23.2043 23.0793 23.1767 23.1206 23.1418 23.1554C23.107 23.1902 23.0656 23.2178 23.0201 23.2366C22.9746 23.2554 22.9258 23.265 22.8765 23.265Z" fill="#5283E9"></path>
+                                                        </svg>
+                                                        <span>0%</span>
+                                                    </p>
+                                                    <p>
+                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.33333 13C3.412 13 2.62611 12.6799 1.97567 12.0397C1.32522 11.3996 1 10.6188 1 9.6975C1 8.88206 1.26111 8.15683 1.78333 7.52183C2.30556 6.88672 2.97178 6.51106 3.782 6.39483C3.99567 5.39828 4.49678 4.58333 5.28533 3.95C6.07378 3.31667 6.97867 3 8 3C9.206 3 10.2297 3.42072 11.0712 4.26217C11.9126 5.10361 12.3333 6.12733 12.3333 7.33333V7.66667H12.5385C13.2411 7.72133 13.8269 8.00383 14.2962 8.51417C14.7654 9.02439 15 9.63078 15 10.3333C15 11.0769 14.7414 11.7072 14.2243 12.2243C13.7072 12.7414 13.0769 13 12.3333 13H4.33333ZM4.33333 12H12.3333C12.8 12 13.1944 11.8389 13.5167 11.5167C13.8389 11.1944 14 10.8 14 10.3333C14 9.86667 13.8389 9.47222 13.5167 9.15C13.1944 8.82778 12.8 8.66667 12.3333 8.66667H11.3333V7.33333C11.3333 6.41111 11.0083 5.625 10.3583 4.975C9.70833 4.325 8.92222 4 8 4C7.07778 4 6.29167 4.325 5.64167 4.975C4.99167 5.625 4.66667 6.41111 4.66667 7.33333H4.33333C3.68889 7.33333 3.13889 7.56111 2.68333 8.01667C2.22778 8.47222 2 9.02222 2 9.66667C2 10.3111 2.22778 10.8611 2.68333 11.3167C3.13889 11.7722 3.68889 12 4.33333 12Z" fill="currentColor"></path>
+                                                        <path d="M4.33333 13C3.412 13 2.62611 12.6799 1.97567 12.0397C1.32522 11.3996 1 10.6188 1 9.6975C1 8.88206 1.26111 8.15683 1.78333 7.52183C2.30556 6.88672 2.97178 6.51106 3.782 6.39483C3.99567 5.39828 4.49678 4.58333 5.28533 3.95C6.07378 3.31667 6.97867 3 8 3C9.206 3 10.2297 3.42072 11.0712 4.26217C11.9126 5.10361 12.3333 6.12733 12.3333 7.33333V7.66667H12.5385C13.2411 7.72133 13.8269 8.00383 14.2962 8.51417C14.7654 9.02439 15 9.63078 15 10.3333C15 11.0769 14.7414 11.7072 14.2243 12.2243C13.7072 12.7414 13.0769 13 12.3333 13H4.33333ZM4.33333 12H12.3333C12.8 12 13.1944 11.8389 13.5167 11.5167C13.8389 11.1944 14 10.8 14 10.3333C14 9.86667 13.8389 9.47222 13.5167 9.15C13.1944 8.82778 12.8 8.66667 12.3333 8.66667H11.3333V7.33333C11.3333 6.41111 11.0083 5.625 10.3583 4.975C9.70833 4.325 8.92222 4 8 4C7.07778 4 6.29167 4.325 5.64167 4.975C4.99167 5.625 4.66667 6.41111 4.66667 7.33333H4.33333C3.68889 7.33333 3.13889 7.56111 2.68333 8.01667C2.22778 8.47222 2 9.02222 2 9.66667C2 10.3111 2.22778 10.8611 2.68333 11.3167C3.13889 11.7722 3.68889 12 4.33333 12Z" fill="currentColor" fill-opacity="0.04"></path>
+                                                        </svg>
+                                                        <span>0%</span>
+                                                    </p>
+                                                    <p>
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.25 3.94225V1.25H12.75V3.94225H11.25ZM11.25 22.75V20.0578H12.75V22.75H11.25ZM20.0578 12.75V11.25H22.75V12.75H20.0578ZM1.25 12.75V11.25H3.94225V12.75H1.25ZM18.5077 6.54625L17.4538 5.49225L19.05 3.8655L20.1345 4.95L18.5077 6.54625ZM4.95 20.1345L3.8655 19.05L5.49225 17.4538L6.54625 18.5077L4.95 20.1345ZM19.05 20.1345L17.4538 18.5077L18.5077 17.4538L20.1345 19.05L19.05 20.1345ZM5.49225 6.54625L3.8655 4.95L4.95 3.8655L6.54625 5.49225L5.49225 6.54625ZM12.0022 17.5C10.4751 17.5 9.17625 16.9655 8.10575 15.8965C7.03525 14.8275 6.5 13.5294 6.5 12.0022C6.5 10.4751 7.0345 9.17625 8.1035 8.10575C9.1725 7.03525 10.4706 6.5 11.9978 6.5C13.5249 6.5 14.8238 7.0345 15.8943 8.1035C16.9648 9.1725 17.5 10.4706 17.5 11.9978C17.5 13.5249 16.9655 14.8238 15.8965 15.8943C14.8275 16.9648 13.5294 17.5 12.0022 17.5ZM12 16C13.1167 16 14.0625 15.6125 14.8375 14.8375C15.6125 14.0625 16 13.1167 16 12C16 10.8833 15.6125 9.9375 14.8375 9.1625C14.0625 8.3875 13.1167 8 12 8C10.8833 8 9.9375 8.3875 9.1625 9.1625C8.3875 9.9375 8 10.8833 8 12C8 13.1167 8.3875 14.0625 9.1625 14.8375C9.9375 15.6125 10.8833 16 12 16Z" fill="currentColor"></path>
+                                                        </svg>
+                                                        <span>UV-0</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class ="forecast-detail">
+                                            <span class = "detail-title">Nightmare-Forecast</span>
+                                            <div class = "conditions">
+                                                <div class = "icon-container"><img class = "weather-icon" src = "https://maps.gstatic.com/weather/v1/clear.svg" /></div>
+                                                <span>Clear</span>
+                                            </div>
+                                            <div class = "probability">
+                                                <p>
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.30133 14.9487L5.85 13.3973H4.686L5.45517 11.2435H6.86533L6.2065 12.782H7.48083L5.7885 14.9487H5.30133ZM9.45517 14.3333L9.88967 13.0897H8.68583L9.34483 11.2435H10.7552L10.223 12.4743H11.4807L9.94233 14.3333H9.45517ZM5 10.5C4.03167 10.5 3.20622 10.1588 2.52367 9.47633C1.84122 8.79378 1.5 7.96833 1.5 7C1.5 6.10767 1.79806 5.33206 2.39417 4.67317C2.99039 4.01417 3.73206 3.62994 4.61917 3.5205C4.96194 2.8915 5.431 2.3975 6.02633 2.0385C6.62156 1.6795 7.27944 1.5 8 1.5C8.97867 1.5 9.82461 1.81839 10.5378 2.45517C11.2511 3.09194 11.6748 3.88594 11.809 4.83717C12.6013 4.89528 13.2479 5.19594 13.7487 5.73917C14.2496 6.28228 14.5 6.92478 14.5 7.66667C14.5 8.453 14.2243 9.12178 13.673 9.673C13.1218 10.2243 12.453 10.5 11.6667 10.5H5ZM5 9.5H11.6667C12.1761 9.5 12.609 9.32178 12.9653 8.96533C13.3218 8.609 13.5 8.17611 13.5 7.66667C13.5 7.15722 13.3218 6.72433 12.9653 6.368C12.609 6.01156 12.1761 5.83333 11.6667 5.83333H10.8333V5.33333C10.8333 4.553 10.5562 3.88567 10.002 3.33133C9.44767 2.77711 8.78033 2.5 8 2.5C7.43244 2.5 6.91533 2.65406 6.44867 2.96217C5.982 3.27028 5.63117 3.68372 5.39617 4.2025L5.27433 4.5H4.96667C4.28633 4.52222 3.70511 4.77433 3.223 5.25633C2.741 5.73844 2.5 6.31967 2.5 7C2.5 7.69144 2.74378 8.281 3.23133 8.76867C3.719 9.25622 4.30856 9.5 5 9.5Z" fill="currentColor"></path>
+                                                    <path d="M5.30133 14.9487L5.85 13.3973H4.686L5.45517 11.2435H6.86533L6.2065 12.782H7.48083L5.7885 14.9487H5.30133ZM9.45517 14.3333L9.88967 13.0897H8.68583L9.34483 11.2435H10.7552L10.223 12.4743H11.4807L9.94233 14.3333H9.45517ZM5 10.5C4.03167 10.5 3.20622 10.1588 2.52367 9.47633C1.84122 8.79378 1.5 7.96833 1.5 7C1.5 6.10767 1.79806 5.33206 2.39417 4.67317C2.99039 4.01417 3.73206 3.62994 4.61917 3.5205C4.96194 2.8915 5.431 2.3975 6.02633 2.0385C6.62156 1.6795 7.27944 1.5 8 1.5C8.97867 1.5 9.82461 1.81839 10.5378 2.45517C11.2511 3.09194 11.6748 3.88594 11.809 4.83717C12.6013 4.89528 13.2479 5.19594 13.7487 5.73917C14.2496 6.28228 14.5 6.92478 14.5 7.66667C14.5 8.453 14.2243 9.12178 13.673 9.673C13.1218 10.2243 12.453 10.5 11.6667 10.5H5ZM5 9.5H11.6667C12.1761 9.5 12.609 9.32178 12.9653 8.96533C13.3218 8.609 13.5 8.17611 13.5 7.66667C13.5 7.15722 13.3218 6.72433 12.9653 6.368C12.609 6.01156 12.1761 5.83333 11.6667 5.83333H10.8333V5.33333C10.8333 4.553 10.5562 3.88567 10.002 3.33133C9.44767 2.77711 8.78033 2.5 8 2.5C7.43244 2.5 6.91533 2.65406 6.44867 2.96217C5.982 3.27028 5.63117 3.68372 5.39617 4.2025L5.27433 4.5H4.96667C4.28633 4.52222 3.70511 4.77433 3.223 5.25633C2.741 5.73844 2.5 6.31967 2.5 7C2.5 7.69144 2.74378 8.281 3.23133 8.76867C3.719 9.25622 4.30856 9.5 5 9.5Z" fill="currentColor" fill-opacity="0.04"></path>
+                                                    </svg>
+                                                    <span>0%</span>
+                                                </p>
+                                                <p>
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13.8828 21.7558C13.6967 21.8571 13.5067 21.8731 13.3125 21.8038C13.1183 21.7346 12.9706 21.6071 12.8693 21.4212L11.273 18.2288C11.1718 18.0429 11.1558 17.8529 11.225 17.6587C11.2942 17.4644 11.4218 17.3167 11.6077 17.2155C11.7936 17.1142 11.9853 17.0998 12.1827 17.1723C12.3801 17.2446 12.5294 17.3737 12.6308 17.5595L14.227 20.7423C14.3282 20.9283 14.3426 21.1183 14.2703 21.3125C14.1978 21.5067 14.0686 21.6544 13.8828 21.7558ZM19.8923 21.7558C19.7064 21.8571 19.5164 21.8731 19.3223 21.8038C19.1279 21.7346 18.9801 21.6071 18.8788 21.4212L17.2828 18.2288C17.1814 18.0429 17.1654 17.8529 17.2348 17.6587C17.3039 17.4644 17.4314 17.3167 17.6173 17.2155C17.8033 17.1142 17.9949 17.0998 18.1923 17.1723C18.3897 17.2446 18.5391 17.3737 18.6402 17.5595L20.2365 20.7423C20.3378 20.9283 20.3523 21.1183 20.2798 21.3125C20.2074 21.5067 20.0783 21.6544 19.8923 21.7558ZM7.88275 21.7558C7.69675 21.8571 7.50508 21.8731 7.30775 21.8038C7.11025 21.7346 6.96092 21.6071 6.85975 21.4212L5.2635 18.2288C5.16217 18.0429 5.14775 17.8529 5.22025 17.6587C5.29258 17.4644 5.42175 17.3167 5.60775 17.2155C5.79358 17.1142 5.98358 17.0998 6.17775 17.1723C6.37208 17.2446 6.51992 17.3737 6.62125 17.5595L8.21725 20.7423C8.31858 20.9283 8.33458 21.1183 8.26525 21.3125C8.19608 21.5067 8.06858 21.6544 7.88275 21.7558ZM7.5 15.75C6.0475 15.75 4.80933 15.2382 3.7855 14.2145C2.76183 13.1907 2.25 11.9525 2.25 10.5C2.25 9.1615 2.69708 7.99808 3.59125 7.00975C4.48558 6.02125 5.59808 5.44492 6.92875 5.28075C7.44292 4.33725 8.1465 3.59625 9.0395 3.05775C9.93233 2.51925 10.9192 2.25 12 2.25C13.468 2.25 14.7369 2.72758 15.8068 3.68275C16.8766 4.63792 17.5122 5.82892 17.7135 7.25575C18.902 7.34292 19.8718 7.79392 20.623 8.60875C21.3743 9.42342 21.75 10.3872 21.75 11.5C21.75 12.6795 21.3365 13.6827 20.5095 14.5095C19.6827 15.3365 18.6795 15.75 17.5 15.75H7.5ZM7.5 14.25H17.5C18.2642 14.25 18.9135 13.9827 19.448 13.448C19.9827 12.9135 20.25 12.2642 20.25 11.5C20.25 10.7358 19.9827 10.0865 19.448 9.552C18.9135 9.01733 18.2642 8.75 17.5 8.75H16.25V8C16.25 6.8295 15.8343 5.8285 15.003 4.997C14.1715 4.16567 13.1705 3.75 12 3.75C11.1487 3.75 10.373 3.98108 9.673 4.44325C8.973 4.90542 8.44675 5.52558 8.09425 6.30375L7.9115 6.75H7.45C6.4295 6.78333 5.55767 7.1615 4.8345 7.8845C4.1115 8.60767 3.75 9.4795 3.75 10.5C3.75 11.5372 4.11567 12.4215 4.847 13.153C5.5785 13.8843 6.46283 14.25 7.5 14.25Z" fill="currentColor"></path>
+                                                    </svg>
+                                                    <span>0%</span>
+                                                    <span>0.0mm</span>
+                                                </p>
+                                            </div>
+                                            <div class = "addition-info">
+                                                <p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.48033 5.691L12.0001 2.172L15.5198 5.69175C16.2157 6.38792 16.6895 7.27479 16.8813 8.24022C17.0731 9.20564 16.9744 10.2063 16.5975 11.1156C16.2207 12.0249 15.5827 12.802 14.7642 13.3488C13.9457 13.8955 12.9835 14.1873 11.9992 14.1872C11.0149 14.1871 10.0527 13.8951 9.23433 13.3482C8.41596 12.8013 7.77813 12.024 7.40149 11.1146C7.02485 10.2052 6.92631 9.20456 7.11834 8.23918C7.31037 7.27379 7.78435 6.38702 8.48033 5.691Z" fill="#5285EB"></path>
+                                                    <path d="M22.8765 17.2417H1.12354C1.02408 17.2417 0.928696 17.2022 0.85837 17.1319C0.788044 17.0616 0.748535 16.9662 0.748535 16.8667C0.748535 16.7673 0.788044 16.6719 0.85837 16.6016C0.928696 16.5313 1.02408 16.4917 1.12354 16.4917H22.8773C22.9767 16.4918 23.0721 16.5314 23.1423 16.6018C23.2126 16.6722 23.252 16.7677 23.2519 16.8671C23.2518 16.9666 23.2122 17.0619 23.1418 17.1322C23.0714 17.2024 22.976 17.2418 22.8765 17.2417ZM22.8765 20.2537H1.12354C1.02408 20.2537 0.928696 20.2142 0.85837 20.1439C0.788044 20.0736 0.748535 19.9782 0.748535 19.8787C0.748535 19.7793 0.788044 19.6839 0.85837 19.6136C0.928696 19.5433 1.02408 19.5037 1.12354 19.5037H22.8773C22.9265 19.5038 22.9753 19.5135 23.0208 19.5324C23.0662 19.5513 23.1076 19.579 23.1423 19.6138C23.1771 19.6487 23.2047 19.6901 23.2235 19.7356C23.2423 19.7811 23.252 19.8299 23.2519 19.8791C23.2519 19.9284 23.2421 19.9771 23.2232 20.0226C23.2043 20.0681 23.1767 20.1094 23.1418 20.1442C23.107 20.179 23.0656 20.2065 23.0201 20.2253C22.9746 20.2441 22.9258 20.2538 22.8765 20.2537ZM22.8765 23.265H1.12354C1.02408 23.265 0.928696 23.2255 0.85837 23.1552C0.788044 23.0848 0.748535 22.9895 0.748535 22.89C0.748535 22.7905 0.788044 22.6952 0.85837 22.6248C0.928696 22.5545 1.02408 22.515 1.12354 22.515H22.8773C22.9265 22.515 22.9753 22.5248 23.0208 22.5437C23.0662 22.5626 23.1076 22.5902 23.1423 22.6251C23.1771 22.66 23.2047 22.7013 23.2235 22.7468C23.2423 22.7924 23.252 22.8411 23.2519 22.8904C23.2519 22.9396 23.2421 22.9884 23.2232 23.0338C23.2043 23.0793 23.1767 23.1206 23.1418 23.1554C23.107 23.1902 23.0656 23.2178 23.0201 23.2366C22.9746 23.2554 22.9258 23.265 22.8765 23.265Z" fill="#5283E9"></path>
+                                                    </svg>
+                                                    <span>0%</span>
+                                                </p>
+                                                <p></p>
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M4.33333 13C3.412 13 2.62611 12.6799 1.97567 12.0397C1.32522 11.3996 1 10.6188 1 9.6975C1 8.88206 1.26111 8.15683 1.78333 7.52183C2.30556 6.88672 2.97178 6.51106 3.782 6.39483C3.99567 5.39828 4.49678 4.58333 5.28533 3.95C6.07378 3.31667 6.97867 3 8 3C9.206 3 10.2297 3.42072 11.0712 4.26217C11.9126 5.10361 12.3333 6.12733 12.3333 7.33333V7.66667H12.5385C13.2411 7.72133 13.8269 8.00383 14.2962 8.51417C14.7654 9.02439 15 9.63078 15 10.3333C15 11.0769 14.7414 11.7072 14.2243 12.2243C13.7072 12.7414 13.0769 13 12.3333 13H4.33333ZM4.33333 12H12.3333C12.8 12 13.1944 11.8389 13.5167 11.5167C13.8389 11.1944 14 10.8 14 10.3333C14 9.86667 13.8389 9.47222 13.5167 9.15C13.1944 8.82778 12.8 8.66667 12.3333 8.66667H11.3333V7.33333C11.3333 6.41111 11.0083 5.625 10.3583 4.975C9.70833 4.325 8.92222 4 8 4C7.07778 4 6.29167 4.325 5.64167 4.975C4.99167 5.625 4.66667 6.41111 4.66667 7.33333H4.33333C3.68889 7.33333 3.13889 7.56111 2.68333 8.01667C2.22778 8.47222 2 9.02222 2 9.66667C2 10.3111 2.22778 10.8611 2.68333 11.3167C3.13889 11.7722 3.68889 12 4.33333 12Z" fill="currentColor"></path>
+                                                    <path d="M4.33333 13C3.412 13 2.62611 12.6799 1.97567 12.0397C1.32522 11.3996 1 10.6188 1 9.6975C1 8.88206 1.26111 8.15683 1.78333 7.52183C2.30556 6.88672 2.97178 6.51106 3.782 6.39483C3.99567 5.39828 4.49678 4.58333 5.28533 3.95C6.07378 3.31667 6.97867 3 8 3C9.206 3 10.2297 3.42072 11.0712 4.26217C11.9126 5.10361 12.3333 6.12733 12.3333 7.33333V7.66667H12.5385C13.2411 7.72133 13.8269 8.00383 14.2962 8.51417C14.7654 9.02439 15 9.63078 15 10.3333C15 11.0769 14.7414 11.7072 14.2243 12.2243C13.7072 12.7414 13.0769 13 12.3333 13H4.33333ZM4.33333 12H12.3333C12.8 12 13.1944 11.8389 13.5167 11.5167C13.8389 11.1944 14 10.8 14 10.3333C14 9.86667 13.8389 9.47222 13.5167 9.15C13.1944 8.82778 12.8 8.66667 12.3333 8.66667H11.3333V7.33333C11.3333 6.41111 11.0083 5.625 10.3583 4.975C9.70833 4.325 8.92222 4 8 4C7.07778 4 6.29167 4.325 5.64167 4.975C4.99167 5.625 4.66667 6.41111 4.66667 7.33333H4.33333C3.68889 7.33333 3.13889 7.56111 2.68333 8.01667C2.22778 8.47222 2 9.02222 2 9.66667C2 10.3111 2.22778 10.8611 2.68333 11.3167C3.13889 11.7722 3.68889 12 4.33333 12Z" fill="currentColor" fill-opacity="0.04"></path>
+                                                    </svg>
+                                                    <span>0%</span>
+                                                </p>
+                                                <p>
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.25 3.94225V1.25H12.75V3.94225H11.25ZM11.25 22.75V20.0578H12.75V22.75H11.25ZM20.0578 12.75V11.25H22.75V12.75H20.0578ZM1.25 12.75V11.25H3.94225V12.75H1.25ZM18.5077 6.54625L17.4538 5.49225L19.05 3.8655L20.1345 4.95L18.5077 6.54625ZM4.95 20.1345L3.8655 19.05L5.49225 17.4538L6.54625 18.5077L4.95 20.1345ZM19.05 20.1345L17.4538 18.5077L18.5077 17.4538L20.1345 19.05L19.05 20.1345ZM5.49225 6.54625L3.8655 4.95L4.95 3.8655L6.54625 5.49225L5.49225 6.54625ZM12.0022 17.5C10.4751 17.5 9.17625 16.9655 8.10575 15.8965C7.03525 14.8275 6.5 13.5294 6.5 12.0022C6.5 10.4751 7.0345 9.17625 8.1035 8.10575C9.1725 7.03525 10.4706 6.5 11.9978 6.5C13.5249 6.5 14.8238 7.0345 15.8943 8.1035C16.9648 9.1725 17.5 10.4706 17.5 11.9978C17.5 13.5249 16.9655 14.8238 15.8965 15.8943C14.8275 16.9648 13.5294 17.5 12.0022 17.5ZM12 16C13.1167 16 14.0625 15.6125 14.8375 14.8375C15.6125 14.0625 16 13.1167 16 12C16 10.8833 15.6125 9.9375 14.8375 9.1625C14.0625 8.3875 13.1167 8 12 8C10.8833 8 9.9375 8.3875 9.1625 9.1625C8.3875 9.9375 8 10.8833 8 12C8 13.1167 8.3875 14.0625 9.1625 14.8375C9.9375 15.6125 10.8833 16 12 16Z" fill="currentColor"></path>
+                                                    </svg>
+                                                    <span>UV-0</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class ="forecast-detail addition">
+                                            <p>max:<span></span></p>
+                                            <p>min:<span></span></p>
+                                            <p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                                <path d="M13.5965 20.294C13.5232 20.357 13.4452 20.4055 13.3625 20.4395C13.2798 20.4733 13.1894 20.4902 13.0912 20.4902C12.9932 20.4902 12.8936 20.4707 12.7923 20.4317C12.6911 20.3926 12.6033 20.3358 12.5287 20.2615C11.9224 19.5987 11.4616 18.9047 11.1463 18.1797C10.8308 17.4547 10.673 16.6877 10.673 15.8785C10.673 15.2915 10.7582 14.674 10.9288 14.026C11.0994 13.3778 11.4001 12.5377 11.8308 11.5057C12.1949 10.5877 12.452 9.87216 12.602 9.35899C12.752 8.84583 12.827 8.37049 12.827 7.93299C12.827 7.36099 12.702 6.82116 12.452 6.31349C12.202 5.80583 11.8103 5.29874 11.277 4.79224C11.2037 4.71658 11.1456 4.62833 11.1027 4.52749C11.0599 4.42666 11.0385 4.32583 11.0385 4.22499C11.0385 4.13016 11.0555 4.04141 11.0895 3.95874C11.1235 3.87608 11.1719 3.79749 11.2348 3.72299C11.3103 3.64866 11.3958 3.59133 11.4915 3.55099C11.587 3.51066 11.6857 3.49049 11.7875 3.49049C11.8895 3.49049 11.9831 3.51024 12.0683 3.54974C12.1536 3.58924 12.2328 3.64191 12.3058 3.70774C12.9558 4.32058 13.4551 4.97958 13.8038 5.68474C14.1526 6.38974 14.327 7.13816 14.327 7.92999C14.327 8.48433 14.2445 9.06633 14.0795 9.67599C13.9145 10.2858 13.6277 11.0817 13.2192 12.0635C12.8154 13.0313 12.5401 13.7852 12.3933 14.325C12.2464 14.8647 12.173 15.3762 12.173 15.8595C12.173 16.4542 12.2923 17.0275 12.5308 17.5795C12.7693 18.1317 13.1385 18.6795 13.6385 19.223C13.7013 19.2985 13.7517 19.3802 13.7895 19.4682C13.8273 19.5562 13.8462 19.6505 13.8462 19.751C13.8462 19.8517 13.826 19.9484 13.7855 20.0412C13.7452 20.1342 13.6822 20.2185 13.5965 20.294ZM18.2697 20.2922C18.1962 20.3564 18.1183 20.4071 18.036 20.4442C17.9535 20.4814 17.8615 20.5 17.76 20.5C17.6585 20.5 17.5586 20.4786 17.4602 20.4357C17.3617 20.3929 17.2757 20.3348 17.202 20.2615C16.5955 19.6052 16.133 18.9154 15.8145 18.1922C15.4958 17.4692 15.3365 16.7055 15.3365 15.901C15.3365 15.3175 15.4233 14.6945 15.597 14.032C15.7708 13.3697 16.0731 12.5276 16.5038 11.5057C16.8743 10.5814 17.1329 9.86816 17.2797 9.36599C17.4266 8.86366 17.5 8.39491 17.5 7.95974C17.5 7.38074 17.375 6.83149 17.125 6.31199C16.875 5.79266 16.4833 5.28608 15.95 4.79224C15.8757 4.71608 15.8199 4.63049 15.7828 4.53549C15.7456 4.44033 15.727 4.34199 15.727 4.24049C15.727 4.14366 15.7414 4.05599 15.7703 3.97749C15.7991 3.89899 15.8451 3.82183 15.9083 3.74599C15.9839 3.67033 16.0723 3.61041 16.1735 3.56624C16.2745 3.52208 16.3748 3.49999 16.4745 3.49999C16.5742 3.49999 16.6644 3.51891 16.7452 3.55674C16.8263 3.59441 16.9041 3.64474 16.9788 3.70774C17.6288 4.32058 18.1282 4.97958 18.477 5.68474C18.8257 6.38974 19 7.13816 19 7.92999C19 8.48433 18.9173 9.06474 18.752 9.67124C18.5865 10.2776 18.2968 11.0833 17.8828 12.0885C17.4789 13.0628 17.2036 13.8167 17.0568 14.35C16.9099 14.8833 16.8365 15.3862 16.8365 15.8585C16.8365 16.449 16.9615 17.025 17.2115 17.5865C17.4615 18.148 17.8365 18.7018 18.3365 19.248C18.3973 19.3223 18.443 19.4029 18.4735 19.4897C18.504 19.5764 18.5193 19.6632 18.5193 19.75C18.5193 19.8492 18.499 19.9483 18.4585 20.0475C18.4182 20.1465 18.3552 20.2281 18.2697 20.2922ZM8.9235 20.2922C8.85017 20.3564 8.77225 20.4071 8.68975 20.4442C8.60725 20.4814 8.51525 20.5 8.41375 20.5C8.31225 20.5 8.21233 20.4786 8.114 20.4357C8.01567 20.3929 7.92958 20.3348 7.85575 20.2615C7.24942 19.6052 6.7885 18.9154 6.473 18.1922C6.15767 17.4692 6 16.7055 6 15.901C6 15.3175 6.08525 14.6945 6.25575 14.032C6.42625 13.3697 6.72692 12.5276 7.15775 11.5057C7.52825 10.5814 7.78692 9.86816 7.93375 9.36599C8.08058 8.86366 8.154 8.39491 8.154 7.95974C8.154 7.38074 8.029 6.83149 7.779 6.31199C7.529 5.79266 7.13733 5.28608 6.604 4.79224C6.51833 4.71608 6.45717 4.63041 6.4205 4.53524C6.38383 4.43991 6.3655 4.34266 6.3655 4.24349C6.3655 4.14449 6.3825 4.05158 6.4165 3.96474C6.45033 3.87808 6.49875 3.79749 6.56175 3.72299C6.63725 3.64866 6.72308 3.59133 6.81925 3.55099C6.91542 3.51066 7.0125 3.49049 7.1105 3.49049C7.20867 3.49049 7.3015 3.51024 7.389 3.54974C7.4765 3.58924 7.55775 3.64191 7.63275 3.70774C8.28275 4.32058 8.78208 4.97741 9.13075 5.67824C9.47942 6.37924 9.65375 7.13141 9.65375 7.93474C9.65375 8.47958 9.57525 9.05516 9.41825 9.66149C9.26125 10.268 8.97583 11.07 8.562 12.0675C8.16433 13.0327 7.8905 13.7852 7.7405 14.325C7.5905 14.8647 7.5155 15.3762 7.5155 15.8595C7.5155 16.4557 7.63633 17.0351 7.878 17.5977C8.11967 18.1604 8.4905 18.7105 8.9905 19.248C9.05133 19.3223 9.097 19.4029 9.1275 19.4897C9.15783 19.5764 9.173 19.6632 9.173 19.75C9.173 19.8492 9.15283 19.9483 9.1125 20.0475C9.07217 20.1465 9.00917 20.2281 8.9235 20.2922Z" fill="#EE675C"></path>
+                                                </svg>
+                                                <span></span>
+                                            </p>
+                                        </div>
+                                        <div class ="forecast-detail addition">
+                                    <div class = "additional-info"></div>
+                                </div>
+                            </div>
+                        </daily-forecast>
+                    </title-wrapper>
+            </forest-tab>
+        </div>
+        <div class = "control-container" style = "display : none "></div>
+        <div class = "control-container" style = "display : none "></div>
+    </section>
+    <!-- Page 3 -->
+    <section id="page3" class="content page-content hidden">
+        <div class="page3-header">
+            <h2>Thống kê Thời Tiết</h2>
+        </div>
+        
+        <!-- Thống kê nhiệt độ -->
+        <div class="stats-section">
+            <h3 class="stats-title">📊 Nhiệt Độ</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">🔥</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Ngày nóng nhất</p>
+                        <p class="stat-value" id="hottest-day">--</p>
+                        <p class="stat-temp" id="hottest-temp">--°C</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">❄️</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Ngày lạnh nhất</p>
+                        <p class="stat-value" id="coldest-day">--</p>
+                        <p class="stat-temp" id="coldest-temp">--°C</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🌡️</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Nhiệt độ trung bình</p>
+                        <p class="stat-value" id="avg-temp">--°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thống kê lượng mưa -->
+        <div class="stats-section">
+            <h3 class="stats-title">💧 Lượng Mưa</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">🌧️</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Ngày mưa nhiều nhất</p>
+                        <p class="stat-value" id="rainiest-day">--</p>
+                        <p class="stat-temp" id="rainiest-amount">-- mm</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">☀️</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Ngày mưa ít nhất</p>
+                        <p class="stat-value" id="least-rain-day">--</p>
+                        <p class="stat-temp" id="least-rain-amount">-- mm</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">💦</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Lượng mưa trung bình</p>
+                        <p class="stat-value" id="avg-rain">-- mm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thống kê UV -->
+        <div class="stats-section">
+            <h3 class="stats-title">☀️ Chỉ Số UV</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">⚠️</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Ngày UV cao nhất</p>
+                        <p class="stat-value" id="highest-uv-day">--</p>
+                        <p class="stat-temp" id="highest-uv">UV --</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">✅</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Ngày UV thấp nhất</p>
+                        <p class="stat-value" id="lowest-uv-day">--</p>
+                        <p class="stat-temp" id="lowest-uv">UV --</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📈</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Chỉ số UV trung bình</p>
+                        <p class="stat-value" id="avg-uv">UV --</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thống kê độ ẩm -->
+        <div class="stats-section">
+            <h3 class="stats-title">💨 Độ Ẩm</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">💧</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Độ ẩm cao nhất</p>
+                        <p class="stat-value" id="highest-humidity-day">--</p>
+                        <p class="stat-temp" id="highest-humidity">--%</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🏜️</span>
+                    <div class="stat-content">
+                        <p class="stat-label">Độ ẩm thấp nhất</p>
+                        <p class="stat-value" id="lowest-humidity-day">--</p>
+                        <p class="stat-temp" id="lowest-humidity">--%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng đánh giá và lời khuyên -->
+        <div class="stats-section">
+            <h3 class="stats-title">🌤️ Đánh Giá & Lời Khuyên</h3>
+            <div class="evaluation-table">
+                <table id="weather-evaluation">
+                    <thead>
+                        <tr>
+                            <th>Ngày</th>
+                            <th>Nhiệt độ</th>
+                            <th>Lượng mưa</th>
+                            <th>UV</th>
+                            <th>Độ ẩm</th>
+                            <th>Đánh giá</th>
+                        </tr>
+                    </thead>
+                    <tbody id="evaluation-body">
+                        <!-- Sẽ được điền bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="nice-days-section">
+                <h4>✨ Những ngày đẹp trời</h4>
+                <div id="nice-days-list" class="nice-days-list">
+                    <!-- Sẽ được điền bằng JavaScript -->
+                </div>
+                <div class="criteria-info">
+                    <p><strong>Tiêu chí ngày đẹp trời:</strong></p>
+                    <ul>
+                        <li>🌡️ Nhiệt độ: 22-28°C</li>
+                        <li>💧 Độ ẩm: 40-60%</li>
+                        <li>☀️ UV: 0-5</li>
+                        <li>☔ Không có mưa (0mm)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="main.js" defer></script>
+    
+    </main>
+</body>
+</html>
